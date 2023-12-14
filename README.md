@@ -35,7 +35,7 @@ This example demonstrates the implementation of a Todo App using the React frame
 
 **📦 Repository**: [https://github.com/mergerocks/stack/packages/todo-react-vite-redux](https://github.com/mergerocks/stack/packages/todo-react-vite-redux)
 
-**🚀 Demo**: [https://merge-stack-todo-react-vite-redux.vercel.app](https://merge-stack-todo-react-vite-redux.vercel.app)
+**🚀 Demo**: [https://merge-stack.vercel.app](https://merge-stack.vercel.app)
 
 <br>
 <hr>
