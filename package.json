@@ -1,6 +1,8 @@
 {
   "name": "root",
-  "scripts": {},
+  "scripts": {
+    "build": "lerna run build"
+  },
   "dependencies": {},
   "devDependencies": {
     "lerna": "^8.0.0"

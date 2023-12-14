@@ -9,6 +9,10 @@ class HttpService {
     const data = await res.json();
     return data;
   }
+
+  async throwError() {
+    throw new Error('Failed to fetch data');
+  }
 }
 
 export const httpService = new HttpService();

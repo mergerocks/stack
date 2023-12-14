@@ -102,7 +102,7 @@ export const fetchTodos = createAsyncThunk(
     withError,
   }: { withError?: boolean | undefined } | undefined = {}) => {
     if (withError) {
-      return new Error('Failed to fetch todos');
+      return httpService.throwError();
     }
     return httpService.getTodos();
   },

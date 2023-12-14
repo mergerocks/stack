@@ -33,7 +33,7 @@ We are UX first SaaS and fintech agency. We specialize in assisting startups in 
 
 This example demonstrates the implementation of a Todo App using the React framework, Vite as the build tool, and Redux Toolkit for state management. The Todo App showcases best practices for structuring a React application and utilizing Redux Toolkit for efficient state management.
 
-**📦 Repository**: [https://github.com/merge-examples/packages/todo-react-vite-redux](https://github.com/merge-examples/packages/todo-react-vite-redux)
+**📦 Repository**: [https://github.com/mergerocks/stack/packages/todo-react-vite-redux](https://github.com/mergerocks/stack/packages/todo-react-vite-redux)
 
 **🚀 Demo**: [https://merge-stack-todo-react-vite-redux.vercel.app](https://merge-stack-todo-react-vite-redux.vercel.app)
 
