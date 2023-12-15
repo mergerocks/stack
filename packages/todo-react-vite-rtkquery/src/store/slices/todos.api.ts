@@ -2,6 +2,21 @@ import { createSelector, nanoid } from '@reduxjs/toolkit';
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Todo, httpService } from '../../api';
 
+export interface TodoCreate {
+  title: string;
+}
+
+export interface TodoUpdate {
+  id: string;
+  title?: string;
+  completed?: boolean;
+}
+
+export interface TodoToggle {
+  id: string;
+  completed: boolean;
+}
+
 export const todosApi = createApi({
   // The cache reducer expects to be added at `state.api` (already default - this is optional)
   reducerPath: 'todosApi',
@@ -16,6 +31,8 @@ export const todosApi = createApi({
     }),
     createTodo: builder.mutation<Todo, string>({
       queryFn: (title) => httpService.createTodo(title),
+
+      // Optimistic update
       async onQueryStarted(title, { dispatch, queryFulfilled }) {
         dispatch(
           todosApi.util.updateQueryData('getTodos', undefined, (draft) => {
@@ -31,6 +48,8 @@ export const todosApi = createApi({
     }),
     updateTodo: builder.mutation<Todo, Todo>({
       queryFn: (todo) => httpService.updateTodo(todo),
+
+      // Optimistic update
       async onQueryStarted(todo, { dispatch, queryFulfilled }) {
         dispatch(
           todosApi.util.updateQueryData('getTodos', undefined, (draft) => {
@@ -48,6 +67,8 @@ export const todosApi = createApi({
     }),
     deleteTodo: builder.mutation<void, string>({
       queryFn: (id) => httpService.deleteTodo(id),
+
+      // Optimistic update
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         dispatch(
           todosApi.util.updateQueryData('getTodos', undefined, (draft) => {
@@ -62,21 +83,6 @@ export const todosApi = createApi({
     }),
   }),
 });
-
-export interface TodoCreate {
-  title: string;
-}
-
-export interface TodoUpdate {
-  id: string;
-  title?: string;
-  completed?: boolean;
-}
-
-export interface TodoToggle {
-  id: string;
-  completed: boolean;
-}
 
 const selectors = {
   selectTodos: createSelector(
