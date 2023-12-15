@@ -16,7 +16,7 @@ This example demonstrates the implementation of a Todo App using the React frame
 
 [**Repository**](https://github.com/mergerocks/stack/packages/todo-react-vite-redux)
 | 
-[**Demo**](https://merge-stack.vercel.app/todo-react-vite-redux)
+[**Demo**](https://merge-stack.netlify.app/todo-react-vite-redux)
 
 <table>
   <tr>
@@ -45,7 +45,7 @@ The same Todo App as above, but this time using RTK Query for data fetching. RTK
 
 [**Repository**](https://github.com/mergerocks/stack/packages/todo-react-vite-rtkquery)
 | 
-[**Demo**](https://merge-stack.vercel.app/todo-react-vite-rtkquery)
+[**Demo**](https://merge-stack.netlify.app/todo-react-vite-rtkquery)
 
 <table>
   <tr>
