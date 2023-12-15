@@ -39,7 +39,7 @@ This example demonstrates the implementation of a Todo App using the React frame
 
 <hr>
 
-### React + Vite + RTK Query
+### 👉 React + Vite + RTK Query
 
 The same Todo App as above, but this time using RTK Query for data fetching. RTK Query is a powerful data fetching and caching tool that is part of the Redux Toolkit ecosystem. It is a great alternative to Redux Thunk and other data fetching libraries.
 
@@ -62,7 +62,7 @@ The same Todo App as above, but this time using RTK Query for data fetching. RTK
   </tr>
   <tr>
     <td>RTK Query</td>
-    <td><a href="https://redux-toolkit.js.org/rtk-query/overview">https://redux-toolkit.js.org</a></td>
+    <td><a href="https://redux-toolkit.js.org/rtk-query/overview">https://redux-toolkit.js.org/rtk-query/overview</a></td>
   </tr>
 </table>
 
