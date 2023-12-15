@@ -1,6 +1,6 @@
 import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { httpService } from '../../api';
+import { TodoCreate, httpService } from '../../api';
 import { StatusType } from '../types';
 
 export interface Todo {
@@ -77,7 +77,6 @@ export const todosSlice = createSlice({
     selectTodoById: (state, id: string) =>
       state.todos.find((todo) => todo.id === id),
     selectTodosStatus: (state) => state.status,
-    selectError: (state) => state.error,
   },
   extraReducers: (builder) => {
     builder
@@ -92,25 +91,67 @@ export const todosSlice = createSlice({
       .addCase(fetchTodos.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
+      })
+      .addCase(createTodo.pending, (state, payload) => {
+        state.status = 'loading';
+        state.error = null;
+        state.todos.unshift({
+          id: nanoid(),
+          title: (payload.meta.arg as unknown as Todo)?.title,
+          completed: false,
+        });
+      })
+      .addCase(updateTodo.pending, (state, payload) => {
+        state.status = 'loading';
+        state.error = null;
+        const todo = payload.meta.arg as unknown as Todo;
+        const idx = state.todos.findIndex((t) => t.id === todo.id);
+        if (idx !== -1) {
+          state.todos[idx] = {
+            ...state.todos[idx],
+            ...todo,
+          };
+        }
+      })
+      .addCase(deleteTodo.pending, (state, payload) => {
+        state.status = 'loading';
+        state.error = null;
+        const id = payload.meta.arg as unknown as string;
+        const idx = state.todos.findIndex((t) => t.id === id);
+        if (idx !== -1) {
+          state.todos.splice(idx, 1);
+        }
       });
   },
 });
 
-export const fetchTodos = createAsyncThunk(
-  'todos/fetchTodos',
-  async ({
-    withError,
-  }: { withError?: boolean | undefined } | undefined = {}) => {
-    if (withError) {
-      return httpService.throwError();
-    }
-    return httpService.getTodos();
+export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
+  return httpService.getTodos();
+});
+
+export const createTodo = createAsyncThunk(
+  'todos/createTodo',
+  async (payload: TodoCreate) => {
+    return httpService.createTodo(payload);
+  },
+);
+
+export const updateTodo = createAsyncThunk(
+  'todos/updateTodo',
+  async (todo: Todo) => {
+    return httpService.updateTodo(todo);
+  },
+);
+
+export const deleteTodo = createAsyncThunk(
+  'todos/deleteTodo',
+  async (id: string) => {
+    return httpService.deleteTodo(id);
   },
 );
 
 // Action creators are generated for each case reducer function
-export const { createTodo, deleteTodo, updateTodo } = todosSlice.actions;
-export const { selectTodos, selectTodoById, selectTodosStatus, selectError } =
+export const { selectTodos, selectTodoById, selectTodosStatus } =
   todosSlice.selectors;
 
 export default todosSlice.reducer;

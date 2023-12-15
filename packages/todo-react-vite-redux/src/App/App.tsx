@@ -4,7 +4,6 @@ import {
   createTodo,
   deleteTodo,
   fetchTodos,
-  selectError,
   selectTodos,
   selectTodosStatus,
   updateTodo,
@@ -13,7 +12,6 @@ import {
 function App() {
   const todos = useAppSelector(selectTodos);
   const todosStatus = useAppSelector(selectTodosStatus);
-  const todosError = useAppSelector(selectError);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -41,13 +39,9 @@ function App() {
         <h1>Todo: React + Vite + Redux</h1>
         <div>
           <button onClick={() => dispatch(fetchTodos())}>refetch todos</button>{' '}
-          <button onClick={() => dispatch(fetchTodos({ withError: true }))}>
-            throw error
-          </button>
         </div>
         <pre>
           <p>Status: {todosStatus}</p>
-          {todosError ? <p>Error: {todosError}</p> : null}
         </pre>
         <br />
         <form onSubmit={onFormSubmit}>

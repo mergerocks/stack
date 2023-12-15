@@ -13,12 +13,16 @@ class HttpService {
       endpoint: string,
       body?: RequestData,
     ) => {
-      const res = await fetch(endpoint, {
-        method,
-        body: JSON.stringify(body),
-      });
-      const data = (await res.json()) as ResponseData;
-      return data;
+      try {
+        const res = await fetch(endpoint, {
+          method,
+          body: JSON.stringify(body),
+        });
+        const data = (await res.json()) as ResponseData;
+        return { data };
+      } catch (error) {
+        return { error };
+      }
     };
 
   protected get = this.request('GET');
@@ -33,7 +37,7 @@ class HttpService {
     return this.get<Todo[]>(this.endpoints.todos);
   }
 
-  async createTodo({ title }: TodoCreate) {
+  async createTodo(title: string) {
     return this.post<Todo, TodoCreate>(this.endpoints.todos, {
       title,
     });

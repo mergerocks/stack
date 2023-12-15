@@ -35,7 +35,34 @@ This example demonstrates the implementation of a Todo App using the React frame
 
 **📦 Repository**: [https://github.com/mergerocks/stack/packages/todo-react-vite-redux](https://github.com/mergerocks/stack/packages/todo-react-vite-redux)
 
-**🚀 Demo**: [https://merge-stack.vercel.app](https://merge-stack.vercel.app)
+**🚀 Demo**: [https://merge-stack.vercel.app/todo-react-vite-redux](https://merge-stack.vercel.app/todo-react-vite-redux)
+
+### React + Vite + RTK Query
+
+<table>
+  <tr>
+    <th>Tool</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>React</td>
+    <td><a href="https://react.dev/">https://react.dev/</a></td>
+  </tr>
+  <tr>
+    <td>Vite</td>
+    <td><a href="https://vitejs.dev/">https://vitejs.dev/</a></td>
+  </tr>
+  <tr>
+    <td>RTK Query</td>
+    <td><a href="https://redux-toolkit.js.org/rtk-query/overview">https://redux-toolkit.js.org</a></td>
+  </tr>
+</table>
+
+The same Todo App as above, but this time using RTK Query for data fetching. RTK Query is a powerful data fetching and caching tool that is part of the Redux Toolkit ecosystem. It is a great alternative to Redux Thunk and other data fetching libraries.
+
+**📦 Repository**: [https://github.com/mergerocks/stack/packages/todo-react-vite-rtkquery](https://github.com/mergerocks/stack/packages/todo-react-vite-rtkquery)
+
+**🚀 Demo**: [https://merge-stack.vercel.app/todo-react-vite-rtkquery](https://merge-stack.vercel.app/todo-react-vite-rtkquery)
 
 <br>
 <hr>
